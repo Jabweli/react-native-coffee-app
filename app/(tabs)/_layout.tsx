@@ -1,45 +1,102 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { StyleSheet } from "react-native";
+import React from "react";
+import { Tabs } from "expo-router";
+import { COLORS } from "@/theme/theme";
+import CustomIcon from "@/components/CustomIcon";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { BlurView } from "expo-blur";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarHideOnKeyboard: true,
+        tabBarShowLabel: false,
+        tabBarStyle: styles.tabBarStyle,
+        tabBarBackground: () => (
+          <BlurView tint="dark" intensity={15} style={styles.blurViewStyles} />
+        ),
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="main"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name="home"
+              size={26}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="cart"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <FontAwesome
+              name="shopping-basket"
+              size={23}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="favorites"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name="heart"
+              size={27}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="orderhistory"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <FontAwesome
+              name="bell"
+              size={22}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    left: 0,
+    height: 70,
+    // backgroundColor: COLORS.primaryBlackRGBA,
+    borderTopWidth: 0,
+    borderTopColor: "transparent",
+    elevation: 0,
+    paddingTop: 15,
+  },
+  blurViewStyles: {
+    // position: "absolute",
+    // top: 0,
+    // bottom: 0,
+    // left: 0,
+    // right: 0,
+  },
+});
