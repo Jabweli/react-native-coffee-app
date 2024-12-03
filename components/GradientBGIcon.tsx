@@ -1,15 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import { COLORS, SPACING } from "@/theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
+import CustomIcon from "./CustomIcon";
+import { BackArrowIcon, HeartIcon, MenuIcon } from "./Icons";
 
 interface Props {
   name: string;
   color: string;
-  size: number;
 }
 
-const GradientBGIcon: React.FC<Props> = ({ name, color, size }) => {
+const GradientBGIcon: React.FC<Props> = ({ name, color }) => {
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -17,7 +18,11 @@ const GradientBGIcon: React.FC<Props> = ({ name, color, size }) => {
         end={{ x: 1, y: 1 }}
         colors={[COLORS.primaryGreyHex, COLORS.primaryBlackHex]}
         style={styles.linearGradient}
-      ></LinearGradient>
+      >
+        {name == "menu" && <MenuIcon fill={color} width={18} />}
+        {name == "back" && <BackArrowIcon fill={color} />}
+        {name == "heart" && <HeartIcon fill={color} />}
+      </LinearGradient>
     </View>
   );
 };

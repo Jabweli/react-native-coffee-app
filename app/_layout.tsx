@@ -15,7 +15,6 @@ export default function RootLayout() {
     "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
     "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
     "Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
-    icomoon: require("../assets/fonts/icomoon.ttf"),
   });
 
   useEffect(() => {
@@ -29,10 +28,15 @@ export default function RootLayout() {
   }
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
+      {/* <Stack.Screen name="index" /> */}
+      <Stack.Screen name="(tabs)" options={{ animation: "slide_from_right" }} />
       <Stack.Screen
-        name="(tabs)"
-        options={{ animation: "slide_from_bottom" }}
+        name="details/[slug]"
+        options={{ animation: "slide_from_right" }}
+      />
+      <Stack.Screen
+        name="payment"
+        options={{ animation: "slide_from_right" }}
       />
     </Stack>
   );

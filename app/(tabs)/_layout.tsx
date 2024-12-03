@@ -2,9 +2,8 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { COLORS } from "@/theme/theme";
-import CustomIcon from "@/components/CustomIcon";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
+import { BellIcon, CartIcon, HeartIcon, HomeIcon2 } from "@/components/Icons";
 
 export default function TabsLayout() {
   return (
@@ -15,7 +14,7 @@ export default function TabsLayout() {
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBarStyle,
         tabBarBackground: () => (
-          <BlurView tint="dark" intensity={15} style={styles.blurViewStyles} />
+          <BlurView intensity={5} style={styles.blurViewStyles} />
         ),
       }}
     >
@@ -23,10 +22,8 @@ export default function TabsLayout() {
         name="main"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name="home"
-              size={26}
-              color={
+            <HomeIcon2
+              fill={
                 focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
               }
             />
@@ -37,10 +34,8 @@ export default function TabsLayout() {
         name="cart"
         options={{
           tabBarIcon: ({ focused }) => (
-            <FontAwesome
-              name="shopping-basket"
-              size={23}
-              color={
+            <CartIcon
+              fill={
                 focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
               }
             />
@@ -51,10 +46,8 @@ export default function TabsLayout() {
         name="favorites"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name="heart"
-              size={27}
-              color={
+            <HeartIcon
+              fill={
                 focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
               }
             />
@@ -65,10 +58,8 @@ export default function TabsLayout() {
         name="orderhistory"
         options={{
           tabBarIcon: ({ focused }) => (
-            <FontAwesome
-              name="bell"
-              size={22}
-              color={
+            <BellIcon
+              fill={
                 focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
               }
             />
@@ -86,7 +77,7 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     height: 70,
-    // backgroundColor: COLORS.primaryBlackRGBA,
+    backgroundColor: COLORS.primaryBlackHex,
     borderTopWidth: 0,
     borderTopColor: "transparent",
     elevation: 0,
