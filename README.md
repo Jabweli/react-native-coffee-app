@@ -1,4 +1,7 @@
-# Welcome to your Expo app 👋
+# Coffee App ☕️
+A sleek and user-friendly coffee app developed using **Expo** and **React Native**. This app is designed to provide users with an intuitive interface to browse coffee options, customize their orders, and experience a delightful UI.
+
+---
 ![App](assets/images/app.png)
 
 
