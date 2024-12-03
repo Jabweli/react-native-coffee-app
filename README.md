@@ -11,6 +11,13 @@ A sleek and user-friendly coffee app developed using **Expo** and **React Native
 - ☕ **Customization**: Customize your coffee order to match your taste.
 - 🎨 **Modern UI/UX**: Enjoy a beautifully designed and responsive interface.
 - 📱 **Cross-Platform Support**: Fully optimized for both Android and iOS devices.
+- 📂 **Six Screens**:
+  - **Home Screen**: View the main menu and explore coffee options.
+  - **Favorites Screen**: Save and view your favorite coffee selections.
+  - **Cart Screen**: Manage your selected items for purchase.
+  - **Order History Screen**: Track your previous orders.
+  - **Payment Screen**: Complete the checkout process seamlessly.
+  - **Details Screen**: View detailed information about specific coffee items.
 
 ---
 
